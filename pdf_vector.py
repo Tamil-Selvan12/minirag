@@ -4,7 +4,9 @@ import faiss
 import pickle
 from sentence_transformers import SentenceTransformer
 
-PDF_PATH = "D:\\mini_rag\\Artificial Intelligence, Machine Learning, and Deep Learning.pdf"
+import os
+
+PDF_PATH = os.getenv("PDF_PATH", "Artificial Intelligence, Machine Learning, and Deep Learning.pdf")
 CHUNK_SIZE = 500  # Number of characters per chunk
 CHUNK_OVERLAP = 50  # Number of overlapping characters between chunks
 EMBEDDING_MODEL = "all-MiniLM-L6-v2"
