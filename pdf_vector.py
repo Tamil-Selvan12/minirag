@@ -1,12 +1,11 @@
+import os
 import fitz  # PyMuPDF
 import numpy as np
 import faiss
 import pickle
 from sentence_transformers import SentenceTransformer
 
-import os
-
-PDF_PATH = os.getenv("PDF_PATH", "Artificial Intelligence, Machine Learning, and Deep Learning.pdf")
+PDF_PATH = os.getenv("PDF_PATH", os.path.join(os.path.dirname(__file__), "Artificial Intelligence, Machine Learning, and Deep Learning.pdf"))
 CHUNK_SIZE = 500  # Number of characters per chunk
 CHUNK_OVERLAP = 50  # Number of overlapping characters between chunks
 EMBEDDING_MODEL = "all-MiniLM-L6-v2"

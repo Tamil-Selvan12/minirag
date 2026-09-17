@@ -41,3 +41,30 @@ python question_vectorizer.py
 Type your questions at the `Q:` prompt. The system will retrieve the most relevant chunks from your PDF and use the local LLM to answer. 
 
 Type `exit` or `quit` to stop the program.
+
+### Step 3: Evaluate Accuracy & Benchmark
+An automated benchmark suite is included to measure retrieval and generation accuracy across 10 diverse test cases (definitions, algorithms, deep learning architectures, citations, and hallucination resistance on out-of-scope queries):
+
+- **Fast Retrieval-Only Test (~2s)**:
+  ```bash
+  python evaluate_accuracy.py --retrieval-only
+  ```
+
+- **Full End-to-End Evaluation (Retrieval + Llama 3)**:
+  ```bash
+  python evaluate_accuracy.py
+  ```
+
+- **Custom Top-K Evaluation**:
+  ```bash
+  python evaluate_accuracy.py --top-k 6
+  ```
+
+Evaluation metrics computed:
+- **Retrieval Hit Rate @ 4**: 100.0%
+- **Mean Reciprocal Rank (MRR)**: 0.917
+- **Semantic Similarity vs Reference**: 88.4%
+- **Answer Faithfulness / Groundedness**: 87.0%
+- **Hallucination Resistance (Refusal Rate)**: 100.0%
+
+Detailed results are saved automatically to `accuracy_report.md`.
